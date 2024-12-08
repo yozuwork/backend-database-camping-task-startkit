@@ -301,12 +301,7 @@ values (
     -- from ( 用戶王小明的購買堂數 ) as "CREDIT_PURCHASE"
     -- inner join ( 用戶王小明的已使用堂數) as "COURSE_BOOKING"
     -- on "COURSE_BOOKING".user_id = "CREDIT_PURCHASE".user_id;
-  select user_id, 
-  count(*) as total
-  FROM "COURSE_BOOKING"
-  where  user_id = (select id  from  "USER"  where email = 'wXlTq@hexschooltest.io') and 
-  status  != '課程已取消'
-  group by user_id  ;  
+
 
 
 -- ████████  █████   █     ███  
