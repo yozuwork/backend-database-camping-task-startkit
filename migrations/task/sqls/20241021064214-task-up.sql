@@ -251,7 +251,7 @@ values (
     -- 2. 狀態`status` 設定為課程已取消
 
     update  "COURSE_BOOKING" 
-    set  booking_at  = '2024-11-24 16:00:00' ,
+    set  cancelled_at  = '2024-11-24 16:00:00' ,
     status  = '課程已取消' 
     where  user_id = (select id from "USER" where email = 'wXlTq@hexschooltest.io'  )
 
