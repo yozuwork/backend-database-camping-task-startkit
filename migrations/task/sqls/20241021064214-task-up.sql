@@ -279,28 +279,8 @@ values (
     -- 1. 請在該筆預約記錄他的加入直播室時間 `join_at` 設為2024-11-25 14:01:59
     -- 2. 狀態`status` 設定為上課中
   update  "COURSE_BOOKING" 
-  set  join_at  = '2024-11-25 14:01:59',
+  set  join_at  = '2024-11-25 14:01:59'
   status  = '上課中' 
   where  user_id = (select id from "USER" where email = 'wXlTq@hexschooltest.io'  ) 
   and status  = '即將授課' ;
 
--- 5-6. 查詢：計算用戶王小明的購買堂數，顯示須包含以下欄位： user_id , total。 (需使用到 SUM 函式與 Group By)
-  select  
-  user_id ,
-  sum(course_id) as total  
-  from "COURSE_BOOKING" 	 
-  where user_id =  (select id  from "USER" where email ='wXlTq@hexschooltest.io')
-  group by  user_id ; 
--- 5-7. 查詢：計算用戶王小明的已使用堂數，顯示須包含以下欄位： user_id , total。 (需使用到 Count 函式與 Group By)
-  select user_id, 
-  sum(purchased_credits) as total
-  FROM "CREDIT_PURCHASE"
-  where  user_id = (select id  from  "USER"  where email = 'wXlTq@hexschooltest.io')
-  group by user_id  ;
-
--- 5-8. [挑戰題] 查詢：請在一次查詢中，計算用戶王小明的剩餘可用堂數，顯示須包含以下欄位： user_id , remaining_credit
-    -- 提示：
-    -- select ("CREDIT_PURCHASE".total_credit - "COURSE_BOOKING".used_credit) as remaining_credit, ...
-    -- from ( 用戶王小明的購買堂數 ) as "CREDIT_PURCHASE"
-    -- inner join ( 用戶王小明的已使用堂數) as "COURSE_BOOKING"
-    -- on "COURSE_BOOKING".user_id = "CREDIT_PURCHASE".user_id;  
