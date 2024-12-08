@@ -279,8 +279,8 @@ values (
     -- 1. 請在該筆預約記錄他的加入直播室時間 `join_at` 設為2024-11-25 14:01:59
     -- 2. 狀態`status` 設定為上課中
   update  "COURSE_BOOKING" 
-  set  join_at  = '2024-11-25 14:01:59'
+  set  join_at  = '2024-11-25 14:01:59',
   status  = '上課中' 
-  where  user_id = (select id from "USER" where email = 'wXlTq@hexschooltest.io'  ) 
+  where  user_id = (select id from "USER" where email = 'wXlTq@hexschooltest.io') 
   and status  = '即將授課' ;
 
