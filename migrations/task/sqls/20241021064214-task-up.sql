@@ -279,9 +279,11 @@ values (
 -- 5-5. 修改：`王小明` 現在已經加入直播室了，請在`COURSE_BOOKING`更新該筆預約資料（請注意，不要更新到已經取消的紀錄）：
     -- 1. 請在該筆預約記錄他的加入直播室時間 `join_at` 設為2024-11-25 14:01:59
     -- 2. 狀態`status` 設定為上課中
-  update  "COURSE_BOOKING" 
-  set  join_at  = '2024-11-25 14:01:59',
-  status  = '上課中' 
-  where  user_id = (select id from "USER" where email = 'wXlTq@hexschooltest.io') 
-  and course_id = (select id from "COURSE" where user_id = (select id from "USER" where email = 'lee2000@hexschooltest.io'))
-  and status  = '即將授課' ;
+  update "COURSE_BOOKING" 
+  set join_at = '2024-11-25 14:01:59',
+      status = '上課中'
+  where user_id = (select id from "USER" where email = 'wXlTq@hexschooltest.io') 
+  and course_id = (select id from "COURSE" 
+                  where user_id = (select id from "USER" 
+                                  where email = 'lee2000@hexschooltest.io'))
+  and status = '即將授課'
