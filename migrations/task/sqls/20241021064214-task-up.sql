@@ -36,7 +36,7 @@ values('透明人','opcatiy0@hexschooltest.io','USER');
 
 -- 1-2 修改：用 Email 找到 李燕容、肌肉棒子、Q太郎，如果他的 Role 為 USER 將他的 Role 改為 COACH
 
-update  "user"
+update  "USER"
 set  role = 'COACH'
 where  email in ('lee2000@hexschooltest.io','muscle@hexschooltest.io','starplatinum@hexschooltest.io')
 and role = 'USER';
